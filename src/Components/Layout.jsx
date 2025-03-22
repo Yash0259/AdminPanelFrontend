@@ -54,7 +54,7 @@ export const Layout = () => {
           <Divider />
           <List>
             <ListItem disablePadding>
-              <ListItemButton onClick={() => navigate("/products")}>
+              <ListItemButton onClick={() => navigate("/")}>
                 <ListItemIcon>
                   <InventoryIcon />
                 </ListItemIcon>
