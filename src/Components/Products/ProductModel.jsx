@@ -7,6 +7,7 @@ import {
   TextField,
   Button,
   Box,
+  Typography,
 } from "@mui/material";
 
 export const ProductModal = ({ open, handleClose, handleSave, productData }) => {
@@ -68,7 +69,9 @@ export const ProductModal = ({ open, handleClose, handleSave, productData }) => 
           fullWidth
           sx={{ mt: 2 }}
         />
-
+        <Typography>
+          Allowed Image Format : "jpeg","png","jpg"
+        </Typography>
         {/* Image Upload */}
         <Box sx={{ mt: 2 }}>
           <input type="file" multiple onChange={handleImageUpload} />
