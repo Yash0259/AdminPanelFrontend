@@ -46,35 +46,36 @@ export const ProductPage = () => {
 
     // Save product (POST request)
     const handleSaveProduct = async (formData) => {
-        try {
-            const formDataToSend = new FormData();
-            Object.entries(formData).forEach(([key, value]) => {
-                if (key === "images") {
-                    value.forEach((image) => formDataToSend.append("images", image));
-                } else {
-                    formDataToSend.append(key, value);
-                }
-            });
+    try {
+        const formDataToSend = new FormData();
+        Object.entries(formData).forEach(([key, value]) => {
+            if (key === "images") {
+                value.forEach((image) => formDataToSend.append("images", image));
+            } else {
+                formDataToSend.append(key, value);
+            }
+        });
 
-            const response = await fetch(`${API_URL}/products`, {
-                method: "POST",
-                body: formDataToSend,
-            });
+        const response = await fetch(`${API_URL}/products`, {
+            method: "POST",
+            body: formDataToSend,
+        });
 
-            if (!response.ok) throw new Error("Failed to create product");
+        if (!response.ok) throw new Error("Failed to create product");
 
-            const newProduct = await response.json();
-            setProducts((prev) => [...prev, newProduct]); // Add new product to the list
+        const newProduct = await response.json();
+        setProducts((prev) => [...prev, newProduct]); // Add new product to the list
 
-            // Show success alert
-            setSnackbar({ open: true, message: "Product created successfully!", severity: "success" });
+        // Show success alert
+        setSnackbar({ open: true, message: "Product created successfully!", severity: "success" });
 
-            handleCloseModal(); // Close modal only after success
-        } catch (error) {
-            setSnackbar({ open: true, message: "Failed to create product", severity: "error" });
-            console.error("Error creating product:", error);
-        }
-    };
+        setModalOpen(false); // ✅ Close modal after success
+        setSelectedProduct(null); // ✅ Reset selected product
+    } catch (error) {
+        setSnackbar({ open: true, message: "Failed to create product", severity: "error" });
+        console.error("Error creating product:", error);
+    }
+};
 
 
     const handleProductUpdate = (productId, updatedProduct) => {
