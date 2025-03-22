@@ -34,7 +34,7 @@ export const Products = ({ product, onEdit, onDelete }) => {
     if (!window.confirm(`Are you sure you want to delete ${product.name}?`)) return;
 
     try {
-      const response = await fetch(`${API_URL.replace(/\/$/, "")}/${product.id}`, { method: "DELETE" });
+      const response = await fetch(`${API_URL}/products/${product.id}`, { method: "DELETE" });
 
       if (!response.ok) throw new Error("Failed to delete product");
 
@@ -64,7 +64,7 @@ export const Products = ({ product, onEdit, onDelete }) => {
     }
 
     try {
-      const response = await fetch(`${API_URL.replace(/\/$/, "")}/${product.id}`, {
+      const response = await fetch(`${API_URL}/products/${product.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedFields),
