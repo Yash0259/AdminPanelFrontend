@@ -5,8 +5,8 @@ import { ProductPage } from '../Pages/ProductPage';
 export const AllRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Navigate to="/products" />} />
-            <Route path="/products" element={<ProductPage />} />
+            <Route path="/" element={<Navigate to="/" />} />
+            <Route path="/" element={<ProductPage />} />
         </Routes>
     );
 };
