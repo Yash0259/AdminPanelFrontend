@@ -15,7 +15,7 @@ export const ProductPage = () => {
     // Fetch products from API
     const fetchProducts = async () => {
         try {
-            const response = await fetch(`${API_URL}/products`);
+            const response = await fetch(`${API_URL}`);
             if (!response.ok) throw new Error("Failed to fetch products");
             const data = await response.json();
             setProducts(data);
@@ -56,7 +56,7 @@ export const ProductPage = () => {
             }
         });
 
-        const response = await fetch(`${API_URL}/products`, {
+        const response = await fetch(`${API_URL}`, {
             method: "POST",
             body: formDataToSend,
         });
